@@ -1,3 +1,4 @@
+import os
 import sys
 import traceback
 from a2a.server.agent_execution import AgentExecutor, RequestContext
@@ -25,6 +26,10 @@ TERMINAL_STATES = {
     TaskState.rejected
 }
 
+# If set, evict the oldest context when the agent dict exceeds this size.
+_max_contexts = os.environ.get("MAX_CONTEXTS")
+MAX_CONTEXTS: int | None = int(_max_contexts) if _max_contexts is not None else None
+
 
 class Executor(AgentExecutor):
     def __init__(self):
@@ -48,6 +53,10 @@ class Executor(AgentExecutor):
         if not agent:
             agent = Agent()
             self.agents[context_id] = agent
+            if MAX_CONTEXTS is not None and len(self.agents) > MAX_CONTEXTS:
+                # Claude says Python 3.7+ maintains dict insertion order
+                oldest = next(iter(self.agents))
+                del self.agents[oldest]
 
         updater = TaskUpdater(event_queue, task.id, context_id)
 
