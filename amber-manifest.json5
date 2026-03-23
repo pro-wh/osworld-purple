@@ -12,7 +12,7 @@
       temperature: { type: "number" },
       max_trajectory_length: { type: "integer" },
       a11y_tree_max_tokens: { type: "integer" },
-      max_contexts: { type: "integer" },
+      max_contexts: { type: "integer", default: 5 },
       azure_openai_api_key: { type: "string", secret: true },
       azure_openai_endpoint: { type: "string" },
       openai_base_url: { type: "string" },
