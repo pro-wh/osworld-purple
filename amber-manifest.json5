@@ -1,5 +1,5 @@
 {
-  manifest_version: "0.1.0",
+  manifest_version: "0.2.0",
 
   // TODO: Declare all config your agent needs from the deployer
   // Use secret: true for sensitive values like API keys
@@ -39,21 +39,21 @@
 
     // TODO: Pass config values as environment variables
     env: {
-      MODEL: "${config.model}",
-      MAX_TOKENS: "${config.max_tokens}",
-      TOP_P: "${config.top_p}",
-      TEMPERATURE: "${config.temperature}",
-      MAX_TRAJECTORY_LENGTH: "${config.max_trajectory_length}",
-      A11Y_TREE_MAX_TOKENS: "${config.a11y_tree_max_tokens}",
+      MODEL: { when: "config.model", value: "${config.model}" },
+      MAX_TOKENS: { when: "config.max_tokens", value: "${config.max_tokens}" },
+      TOP_P: { when: "config.top_p", value: "${config.top_p}" },
+      TEMPERATURE: { when: "config.temperature", value: "${config.temperature}" },
+      MAX_TRAJECTORY_LENGTH: { when: "config.max_trajectory_length", value: "${config.max_trajectory_length}" },
+      A11Y_TREE_MAX_TOKENS: { when: "config.a11y_tree_max_tokens", value: "${config.a11y_tree_max_tokens}" },
       MAX_CONTEXTS: "${config.max_contexts}",
-      AZURE_OPENAI_API_KEY: "${config.azure_openai_api_key}",
-      AZURE_OPENAI_ENDPOINT: "${config.azure_openai_endpoint}",
-      OPENAI_BASE_URL: "${config.openai_base_url}",
-      OPENAI_API_KEY: "${config.openai_api_key}",
-      ANTHROPIC_API_KEY: "${config.anthropic_api_key}",
-      TOGETHER_API_KEY: "${config.together_api_key}",
-      GENAI_API_KEY: "${config.genai_api_key}",
-      GROQ_API_KEY: "${config.groq_api_key}",
+      AZURE_OPENAI_API_KEY: { when: "config.azure_openai_api_key", value: "${config.azure_openai_api_key}" },
+      AZURE_OPENAI_ENDPOINT: { when: "config.azure_openai_endpoint", value: "${config.azure_openai_endpoint}" },
+      OPENAI_BASE_URL: { when: "config.openai_base_url", value: "${config.openai_base_url}" },
+      OPENAI_API_KEY: { when: "config.openai_api_key", value: "${config.openai_api_key}" },
+      ANTHROPIC_API_KEY: { when: "config.anthropic_api_key", value: "${config.anthropic_api_key}" },
+      TOGETHER_API_KEY: { when: "config.together_api_key", value: "${config.together_api_key}" },
+      GENAI_API_KEY: { when: "config.genai_api_key", value: "${config.genai_api_key}" },
+      GROQ_API_KEY: { when: "config.groq_api_key", value: "${config.groq_api_key}" },
       PYTHONUNBUFFERED: "1",
     },
 
