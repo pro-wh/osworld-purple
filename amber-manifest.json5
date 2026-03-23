@@ -52,6 +52,7 @@
       TOGETHER_API_KEY: "${config.together_api_key}",
       GENAI_API_KEY: "${config.genai_api_key}",
       GROQ_API_KEY: "${config.groq_api_key}",
+      PYTHONUNBUFFERED: "1",
     },
 
     network: {
